@@ -1,8 +1,12 @@
 var path = require("path");
 var DIST_DIR = path.resolve(__dirname, "dist");
 var SRC_DIR = path.resolve(__dirname, "src");
-var config = {
-    entry: SRC_DIR + "/app/index.js",
+
+module.exports = {
+    mode: 'production',
+    entry: { 
+        main: [ SRC_DIR + "/index.js", SRC_DIR + "/resources/css/main.css"] 
+    },
     output: {
         path: DIST_DIR + "/app",
         filename: "bundle.js",
@@ -28,19 +32,14 @@ var config = {
                 // -loader suffix is no longer optional in webpack2 for clarity reasons
                 // see webpack 1 upgrade guide
                 query: {
-                presets: ["react", "es2015", "stage-2"]
+                  presets: ["react", "es2015", "stage-2"]
                 }
-            }
-            /*
+            },
             {
-                test: /\.js?/,
                 include: SRC_DIR,
-                loader: "babel-loader",
-                query: {
-                    presets: ["react", "es2015", "stage-2"]
-                }
-            }*/
+                test: /\.css?$/,
+                use: ['style-loader', 'css-loader']
+            }
         ]
     }
 };
-module.exports = config;

@@ -1,0 +1,12 @@
+.headline {
+  color: green;
+
+  &__wrapper {
+    display: block; 
+    height: 100px;
+    width: 80%;
+    background-color: #596f75;
+    margin: 0; 
+
+  }
+}
